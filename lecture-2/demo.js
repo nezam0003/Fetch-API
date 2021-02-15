@@ -1,38 +1,35 @@
 const getButton = document.getElementById("btn");
-const showData = document.querySelector(".showData");
-// const makeRequest = (e) => {
-//     e.preventDefault();
+
+// function makeRequest(e) {
 //     console.log("button clicked");
-//     fetch("demo.txt")
+//     fetch("demo.json")
 //         .then((res) => {
+//             console.log(res);
 //             if (!res.ok) {
 //                 throw Error(res.statusText);
 //             }
-//             console.log(res);
-//             return res.text();
+//             return res.json();
 //         })
 //         .then((data) => {
-//             showData.innerText = data;
 //             console.log(data);
 //         })
-//         .catch((error) => console.log(error));
-// };
+//         .catch((error) => {
+//             console.log(error);
+//         });
+// }
 
-// Async Await
-
-async function makeRequest(e) {
+const makeRequest = async() => {
     try {
-        console.log("button clickde");
-        const res = await fetch("demo.txt");
+        console.log("button clicked");
+        const res = await fetch("demo.json");
+        console.log(res);
         if (!res.ok) {
             throw Error(res.statusText);
         }
-        console.log(res);
-
-        const data = await res.text();
+        const data = await res.json();
         console.log(data);
     } catch (error) {
         console.log(error);
     }
-}
+};
 getButton.addEventListener("click", makeRequest);
